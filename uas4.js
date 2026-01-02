@@ -1,5 +1,4 @@
-// Mengambil elemen hamburger dan menu
-const hamburger = document.querySelector('#hamburger');
+const hamburger = document.querySelector('.hamburger'); // Menggunakan titik (.) untuk class
 const navMenu = document.querySelector('.nav-menu');
 const navLinks = document.querySelectorAll('.nav-link');
 
