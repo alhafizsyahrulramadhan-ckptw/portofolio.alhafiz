@@ -216,7 +216,6 @@ header.scrolled {
 .hamburger.active span:nth-child(3) {
     transform: rotate(-45deg) translate(7px, -6px);
 }
-
 /* Sections */
 .section {
     min-height: 100vh;
@@ -779,23 +778,6 @@ header.scrolled {
         grid-template-columns: auto auto;
         gap: 1rem;
     }
-    /* Pastikan animasi X bekerja */
-    .hamburger.active span:nth-child(1) {
-    transform: rotate(45deg) translate(5px, 5px);
-    }
-
-    .hamburger.active span:nth-child(2) {
-    opacity: 0;
-    }
-
-    .hamburger.active span:nth-child(3) {
-    transform: rotate(-45deg) translate(7px, -6px);
-    }
-
-    /* Pastikan menu muncul saat active */
-    .nav-menu.active {
-    transform: translateX(0) !important;
-}
     
     .nav-menu {
         position: fixed;
@@ -1073,6 +1055,249 @@ header.scrolled {
     transition: width 1s ease;
 }
 
+/* Services Section */
+.services {
+    background: var(--bg-secondary);
+    position: relative;
+}
+
+.services::before {
+    content: '';
+    position: absolute;
+    top: 20%;
+    right: -10%;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(0, 212, 255, 0.1) 0%, transparent 70%);
+    border-radius: 50%;
+    filter: blur(100px);
+    animation: float 8s ease-in-out infinite;
+}
+
+.services-content {
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+}
+
+.service-card {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--border-radius);
+    padding: 2.5rem;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    transition: var(--transition-smooth);
+    position: relative;
+    overflow: hidden;
+}
+
+.service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.1), transparent);
+    transition: left 0.5s;
+}
+
+.service-card:hover::before {
+    left: 100%;
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--accent-primary);
+    box-shadow: var(--shadow-hover);
+}
+
+.service-icon {
+    width: 80px;
+    height: 80px;
+    background: var(--accent-gradient);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    font-size: 2rem;
+    color: var(--bg-primary);
+    position: relative;
+    z-index: 1;
+}
+
+.service-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+}
+
+.service-card p {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.service-features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+}
+
+.service-features span {
+    background: rgba(0, 212, 255, 0.1);
+    color: var(--accent-primary);
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+/* Container utama grid */
+.project-grid {
+    display: flex;               /* Mengaktifkan mode sejajar ke samping */
+    flex-direction: row;        /* Pastikan arahnya mendatar */
+    justify-content: center;    /* Posisi di tengah */
+    gap: 20px;                  /* Jarak antar kartu project */
+    flex-wrap: wrap;            /* Jika layar sempit, kartu akan turun ke bawah */
+    padding: 20px 0;
+}
+
+/* Styling kartu project individual */
+.column-card {
+    background: var(--bg-tertiary); /* Mengikuti variabel warna Anda */
+    border: 1px solid var(--border-accent);
+    border-radius: 16px;
+    padding: 20px;
+    width: 380px;               /* Lebar tetap tiap kartu */
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.column-card:hover {
+    transform: translateY(-10px); /* Efek melayang saat kursor di atasnya */
+    border-color: var(--accent-primary);
+}
+
+/* Mengatur gambar di dalam kartu */
+.column-card img {
+    width: 100%;                /* Gambar mengikuti lebar kartu */
+    height: 300px;              /* Tinggi gambar disamakan */
+    object-fit: cover;          /* Gambar dipotong rapi agar tidak gepeng */
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.column-card h3 {
+    color: var(--accent-primary);
+    margin-bottom: 10px;
+}
+
+.column-card p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+.media-card {
+    background: var(--bg-tertiary); /* Mengikuti variabel warna Anda */
+    border: 1px solid var(--border-accent);
+    border-radius: 16px;
+    padding: 20px;
+    width: 380px;               /* Lebar tetap tiap kartu */
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.media-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--accent-primary);
+    box-shadow: var(--shadow-glow);
+}
+
+/* Label Media (Pojok Kanan Atas) */
+.media-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: var(--accent-gradient);
+    color: var(--bg-primary);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    z-index: 5;
+}
+
+/* Gambar & Video Sizing */
+.media-card img, 
+.media-card video {
+    width: 350px;               /* Lebar tetap tiap kartu */
+    height: 200px;
+    object-fit: cover;
+    display: block;
+}
+
+/* Musik / Audio Box */
+.audio-icon-box {
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(to bottom, var(--bg-secondary), var(--bg-tertiary));
+}
+
+.audio-icon-box i {
+    font-size: 3rem;
+    color: var(--accent-primary);
+    text-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+}
+
+audio {
+    width: 90%;
+    height: 35px;
+    margin: 10px auto;
+    display: block;
+    filter: invert(100%) hue-rotate(180deg) brightness(1.5); /* Menyesuaikan ke dark mode */
+}
+
+/* Informasi Teks */
+.media-info {
+    padding: 1.5rem;
+}
+
+.media-info h3 {
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.media-info p {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    line-height: 1.5;
+}
+
+/* Responsif Layar Kecil */
+@media (max-width: 768px) {
+    .media-grid {
+        grid-template-columns: 1fr; /* Jadi satu kolom di HP */
+    }
+}
+
+
+/* Responsif untuk layar HP */
+@media (max-width: 768px) {
+    .column-card {
+        width: 100%;            /* Di HP, kartu akan memenuhi lebar layar */
+    }
+}
 /* Projects Section */
 .projects {
     background: var(--bg-primary);
@@ -1205,6 +1430,15 @@ header.scrolled {
     border-radius: 15px;
     font-size: 0.8rem;
     font-weight: 500;
+}
+.media-grid {
+     display: flex;               /* Mengaktifkan mode sejajar ke samping */
+    flex-direction: row;        /* Pastikan arahnya mendatar */
+    justify-content: center;    /* Posisi di tengah */
+    gap: 20px;                  /* Jarak antar kartu project */
+    flex-wrap: wrap;            /* Jika layar sempit, kartu akan turun ke bawah */
+    padding: 20px 0;
+    
 }
 
 /* Contact Section */
@@ -1371,6 +1605,11 @@ header.scrolled {
         gap: 2rem;
     }
 
+    .services-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
     .projects-grid {
         grid-template-columns: 1fr;
         gap: 2rem;
@@ -1394,7 +1633,11 @@ header.scrolled {
     .skill-category {
         padding: 1.5rem;
     }
-    
+
+    .service-card {
+        padding: 2rem;
+    }
+
     .project-info {
         padding: 1.5rem;
     }
